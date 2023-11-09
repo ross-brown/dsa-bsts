@@ -11,12 +11,12 @@ class Node {
   * Returns the node, if found; else undefined. Uses recursion. */
 
   findRecursively(val) {
-    if(val === this.val) return this;
+    if (val === this.val) return this;
 
-    if(val < this.val && this.left){
+    if (val < this.val && this.left) {
       return this.left.findRecursively(val);
     }
-    if(val > this.val && this.right){
+    if (val > this.val && this.right) {
       return this.right.findRecursively(val);
     }
   }
@@ -47,10 +47,10 @@ class Node {
 
     traversedNodes.push(this.val);
 
-    if(this.left){
+    if (this.left) {
       traversedNodes.push(...this.left.dfsPreOrder());
     }
-    if(this.right){
+    if (this.right) {
       traversedNodes.push(...this.right.dfsPreOrder());
     }
     return traversedNodes;
@@ -62,13 +62,13 @@ class Node {
   dfsInOrder() {
     let traversedNodes = [];
 
-    if(this.left){
+    if (this.left) {
       traversedNodes.push(...this.left.dfsInOrder());
     }
 
     traversedNodes.push(this.val);
 
-    if(this.right){
+    if (this.right) {
       traversedNodes.push(...this.right.dfsInOrder());
     }
     return traversedNodes;
@@ -80,11 +80,11 @@ class Node {
   dfsPostOrder() {
     let traversedNodes = [];
 
-    if(this.left){
+    if (this.left) {
       traversedNodes.push(...this.left.dfsPostOrder());
     }
 
-    if(this.right){
+    if (this.right) {
       traversedNodes.push(...this.right.dfsPostOrder());
     }
 
@@ -173,7 +173,7 @@ class BinarySearchTree {
    * Returns an array of visited nodes. */
 
   dfsPreOrder() {
-    if(!this.root) return [];
+    if (!this.root) return [];
     return this.root.dfsPreOrder();
   }
 
@@ -181,7 +181,7 @@ class BinarySearchTree {
    * Returns an array of visited nodes. */
 
   dfsInOrder() {
-    if(!this.root) return [];
+    if (!this.root) return [];
     return this.root.dfsInOrder();
   }
 
@@ -189,7 +189,7 @@ class BinarySearchTree {
    * Returns an array of visited nodes. */
 
   dfsPostOrder() {
-    if(!this.root) return [];
+    if (!this.root) return [];
     return this.root.dfsPostOrder();
   }
 
@@ -197,17 +197,17 @@ class BinarySearchTree {
    * Returns an array of visited nodes. */
 
   bfs() {
-    if(!this.root) return [];
+    if (!this.root) return [];
     let output = [];
     let toVisitQueue = [this.root];
 
-    while(toVisitQueue.length){
+    while (toVisitQueue.length) {
       let current = toVisitQueue.shift();
 
-      output.push(current.val)
+      output.push(current.val);
 
-      if(current.left) toVisitQueue.push(current.left);
-      if(current.right) toVisitQueue.push(current.right);
+      if (current.left) toVisitQueue.push(current.left);
+      if (current.right) toVisitQueue.push(current.right);
     }
 
     return output;
@@ -225,49 +225,49 @@ class BinarySearchTree {
    * Returns the removed node. */
 
   remove(val) {
-
+    
   }
 
-  dfsPostOrderWithHelper(){
-    if(!this.root) return [];
+  dfsPostOrderWithHelper() {
+    if (!this.root) return [];
     let traversedNodes = [];
 
-    function _helper(node){
-      if(node.left){
-        _helper(node.left);
-      }
-  
-      if(node.right){
-        _helper(node.right);
-      }
-  
-      traversedNodes.push(node.val);
-    }
-    _helper(this.root)
-    return traversedNodes;
-  }
-
-  dfsInOrderWithHelper(){
-    if(!this.root) return [];
-    let traversedNodes = [];
-
-    function _helper(node){
-      if(node.left){
+    function _helper(node) {
+      if (node.left) {
         _helper(node.left);
       }
 
-      traversedNodes.push(node.val);
-  
-      if(node.right){
+      if (node.right) {
         _helper(node.right);
       }
-  
+
+      traversedNodes.push(node.val);
     }
-    _helper(this.root)
+    _helper(this.root);
     return traversedNodes;
   }
 
+  dfsInOrderWithHelper() {
+    if (!this.root) return [];
+    let traversedNodes = [];
+
+    function _helper(node) {
+      if (node.left) {
+        _helper(node.left);
+      }
+
+      traversedNodes.push(node.val);
+
+      if (node.right) {
+        _helper(node.right);
+      }
+
+    }
+    _helper(this.root);
+    return traversedNodes;
   }
+
+}
 
 
 module.exports = {
